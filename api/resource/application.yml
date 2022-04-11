@@ -23,7 +23,7 @@ api:
         scheme: http
         host: 0.0.0.0
         port: 6558
-        base-url: /wordle
+        base-url: /wordle-api
     scheduler:
         time-zone: ${SCHEDULER_TIMEZONE:Brazil/East}
         enable: ${ENABLE_SCHEDULER_API:True}
