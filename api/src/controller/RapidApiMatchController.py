@@ -5,7 +5,7 @@ from dto import WordGuessDto, MatchDto
 
 
 @Controller(url='/api/match', tag='RapiApiMatch', description='RapiApi Match controller')
-class RapiApiMatchController:
+class RapidApiMatchController:
 
     @ControllerMethod(url = '/verify',
         requestParamClass = WordGuessDto.WordGuessRequestParamDto,
