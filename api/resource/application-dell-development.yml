@@ -1,0 +1,26 @@
+print-status: False
+
+api:
+    server:
+        scheme: https
+        base-url: /dell-development
+        port: 5000
+    database:
+        dialect: ${DATABASE_DIALECT:sqlite}
+        settings:
+            check_same_thread: False
+
+match:
+    duration-in-minutes: 30
+
+queue:
+    wordle:
+        emitter:
+            queue-key:
+                create-word: 'wordle-create-word-dell-development'
+                create-guess: 'wordle-create-guess-dell-development'
+
+swagger:
+    schemes: [https] ###- schemes: [${api.server.scheme}] ###- bug
+    host: ${SWAGGER_HOST:${api.server.host}} ###- bug
+    port: "80"
