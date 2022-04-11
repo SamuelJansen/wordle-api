@@ -13,7 +13,7 @@ from config import WordleQueueConfig
 )
 class WordleListener:
 
-    @MessageListenerMethod(url = '/api/listener/word',
+    @MessageListenerMethod(url = '/listener/word',
         requestClass=[dict]
         # , logRequest = True
         # , logResponse = True
@@ -25,7 +25,7 @@ class WordleListener:
         return {}, HttpStatus.ACCEPTED
 
 
-    @MessageListenerMethod(url = '/api/listener/guess',
+    @MessageListenerMethod(url = '/listener/guess',
         requestClass=[dict]
         # , logRequest = True
         # , logResponse = True
