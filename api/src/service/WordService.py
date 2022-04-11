@@ -18,7 +18,10 @@ class WordService:
         wordTextList = []
         try:
             wordTextList = self.client.randomWord.getRandomWordTextList(amount, length)
-            self.createOrUpdateAll(wordTextList)
+            if ObjectHelper.isEmpty(wordTextList):
+                wordTextList = self.getRandomWordList(amount, length)
+            else:
+                self.createOrUpdateAll(wordTextList)
         except Exception as exception:
             wordTextList = [word.text for word in self.getRandomWordList(amount, length)]
         return wordTextList
