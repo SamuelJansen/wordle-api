@@ -3,7 +3,7 @@ from python_framework import Controller, ControllerMethod, HttpStatus
 from dto import SessionDto
 
 
-@Controller(url = '/api/match', tag='Security', description='Security controller')
+@Controller(url = '/api/match', tag='RapiApiSecurity', description='RapiApi Security controller')
 class RapiApiSessionController:
 
     @ControllerMethod(url = '/authenticate',

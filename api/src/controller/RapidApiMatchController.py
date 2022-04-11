@@ -4,7 +4,7 @@ from enumeration.MatchContext import MatchContext
 from dto import WordGuessDto, MatchDto
 
 
-@Controller(url='/api/match', tag='Match', description='Match controller')
+@Controller(url='/api/match', tag='RapiApiMatch', description='RapiApi Match controller')
 class RapiApiMatchController:
 
     @ControllerMethod(url = '/verify',
