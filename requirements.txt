@@ -1,1 +1,2 @@
+queue-manager-api<1.0.0,>=0.0.14
 python_framework<1.0.0,>=0.3.60
