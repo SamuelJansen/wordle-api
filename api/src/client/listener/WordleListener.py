@@ -14,28 +14,25 @@ from config import WordleQueueConfig
 class WordleListener:
 
     @MessageListenerMethod(url = '/listener/word',
-        requestClass=[dict]
+        requestClass=[dict],
+        timeout = 2
         , logRequest = True
         , logResponse = True
     )
     def acceptWord(self, dto):
         ###- {'wordList':[wordGuess]}
-        for word in dto.get('wordList'):
+        for word in dto.get('wordList', []):
             self.service.word.createOrUpdateByText(word)
         return {}, HttpStatus.ACCEPTED
 
 
     @MessageListenerMethod(url = '/listener/guess',
-        requestClass=[dict]
+        requestClass=[dict],
+        timeout = 2
         , logRequest = True
         , logResponse = True
     )
     def acceptGuess(self, dto):
         ###- {'guess': wordGuess,'userId': match.user.id,'matchId': match.id}
         self.service.guessEvent.createModel(dto)
-        #     dto.get('wordGuess'),
-        #     userId = dto.get('userId'),
-        #     matchId = dto.get('matchId'),
-        #     status = dto.get('status')
-        # )
         return {}, HttpStatus.ACCEPTED

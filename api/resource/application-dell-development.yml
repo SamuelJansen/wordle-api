@@ -17,8 +17,8 @@ queue:
     wordle:
         emitter:
             queue-key:
-                create-word: 'wordle-create-word-dell-development'
-                create-guess: 'wordle-create-guess-dell-development'
+                create-word: 'wordel-from-dell-development-to-dev-create-word'
+                create-guess: 'wordel-from-dell-development-to-dev-create-guess'
 
 swagger:
     schemes: [https] ###- schemes: [${api.server.scheme}] ###- bug
