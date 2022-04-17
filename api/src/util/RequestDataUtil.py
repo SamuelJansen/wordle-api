@@ -35,7 +35,7 @@ def getCountry(headers):
     return headers.get('Cf-Ipcountry', f'{RequestDataConstant.DEFAUTL_COUNTRY}')
 
 
-def getCountry(headers):
+def getIdentifiers(headers):
     return headers.get('Identifiers', f'{RequestDataConstant.DEFAUTL_IDENTIFIERS}')
 
 
