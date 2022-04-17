@@ -12,15 +12,15 @@ from config import WordleQueueConfig
         JwtConstant.DEFAULT_JWT_API_KEY_HEADER_NAME: f'Bearer {WordleQueueConfig.QUEUE_API_KEY}'
     }
     , muteLogs = False
-    , logRequest = True
-    , logResponse = True
+    # , logRequest = True
+    # , logResponse = True
 )
 class WordleEmitter:
 
     @MessageEmitterMethod(
         queueKey = WordleQueueConfig.EMITTER_CREATE_WORD_QUEUE
-        , logRequest = True
-        , logResponse = True
+        # , logRequest = True
+        # , logResponse = True
         # requestClass=[MessageDto.MessageRequestDto, str],
         # responseClass=[MessageDto.MessageRequestDto]
     )
@@ -30,8 +30,8 @@ class WordleEmitter:
 
     @MessageEmitterMethod(
         queueKey = WordleQueueConfig.EMITTER_CREATE_GUESS_QUEUE
-        , logRequest = True
-        , logResponse = True
+        # , logRequest = True
+        # , logResponse = True
         # requestClass=[MessageDto.MessageRequestDto, str],
         # responseClass=[MessageDto.MessageRequestDto]
     )
