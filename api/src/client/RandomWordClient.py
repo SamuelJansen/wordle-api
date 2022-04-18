@@ -11,13 +11,15 @@ from config import RandomWordConfig
         RapidApiConstant.RAPID_API_HOST_HEADER_KEY: RandomWordConfig.RAPID_HOST,
         RapidApiConstant.RAPID_API_KEY_HEADER_KEY: RandomWordConfig.API_KEY
     }
+    , logRequest = True
+    , logResponse = True
 )
 class RandomWordClient :
 
     @HttpClientMethod(
         requestClass = [int, int]
-        # , logRequest = True
-        # , logResponse = True
+        , logRequest = True
+        , logResponse = True
     )
     def getRandomWordTextList(self, amount, length):
         return self.get(params={

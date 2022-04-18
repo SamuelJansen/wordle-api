@@ -1,4 +1,4 @@
-from python_helper import RandomHelper
+from python_helper import RandomHelper, log
 from python_framework import Service, ServiceMethod, HttpStatus, GlobalException
 
 from config import RandomWordConfig, MatchConfig
@@ -47,6 +47,7 @@ class WordService:
 
     @ServiceMethod(requestClass=[[str]])
     def createOrUpdateByTextListEvent(self, textList):
+        log.status(self.createOrUpdateByTextListEvent, f'Creating words: {textList}')
         return self.emitter.wordle.createWord({
             'wordList': textList
         })

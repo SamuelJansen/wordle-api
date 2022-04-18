@@ -12,8 +12,8 @@ from config import WordleQueueConfig
         JwtConstant.DEFAULT_JWT_API_KEY_HEADER_NAME: f'Bearer {WordleQueueConfig.QUEUE_API_KEY}'
     }
     , muteLogs = False
-    # , logRequest = True
-    # , logResponse = True
+    , logRequest = True
+    , logResponse = True
 )
 class WordleEmitter:
 

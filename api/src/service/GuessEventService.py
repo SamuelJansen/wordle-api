@@ -1,3 +1,4 @@
+from python_helper import log
 from python_framework import Service, ServiceMethod, EnumItem
 
 import GuessEvent
@@ -15,6 +16,7 @@ class GuessEventService:
 
     @ServiceMethod(requestClass=[GuessEvent.GuessEvent])
     def createValidGuessEvent(self, wordGuess, userId=None, matchId=None):
+        log.status(self.createValidGuessEvent, f'New word guess event: {wordGuess}, userId: {userId}, matchId: {matchId}')
         return self.emitGuessCreationEvent(wordGuess, userId, matchId, GuessEventStatus.VALID)
 
 

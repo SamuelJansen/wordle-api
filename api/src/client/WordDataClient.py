@@ -11,13 +11,15 @@ from config import WordDataConfig
         RapidApiConstant.RAPID_API_HOST_HEADER_KEY: WordDataConfig.RAPID_HOST,
         RapidApiConstant.RAPID_API_KEY_HEADER_KEY: WordDataConfig.API_KEY
     }
+    , logRequest = True
+    , logResponse = True
 )
 class WordDataClient :
 
     @HttpClientMethod(
         requestClass = [str]
-        # , logRequest = True
-        # , logResponse = True
+        , logRequest = True
+        , logResponse = True
     )
     def getWordData(self, word):
         return self.get(params={"entry":str(word)})

@@ -8,8 +8,8 @@ from config import WordleQueueConfig
 @MessageListener(
     timeout = WordleQueueConfig.LISTENER_TIMEOUT
     , muteLogs = False
-    # , logRequest = True
-    # , logResponse = True
+    , logRequest = True
+    , logResponse = True
 )
 class WordleListener:
 
