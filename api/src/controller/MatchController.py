@@ -4,7 +4,10 @@ from enumeration.MatchContext import MatchContext
 from dto import WordGuessDto, MatchDto
 
 
-@Controller(url='/match', tag='Match', description='Match controller')
+@Controller(url='/match', tag='Match', description='Match controller'
+    , logRequest = True
+    , logResponse = True
+)
 class MatchController:
 
     @ControllerMethod(url = '/verify',
