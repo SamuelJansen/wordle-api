@@ -8,6 +8,9 @@ from enumeration.MatchStep import MatchStep
 import User, Match, Guess
 
 
+LOGGER = log.status
+
+
 @Service()
 class MatchService:
 
@@ -15,7 +18,7 @@ class MatchService:
     def abandon(self):
         model = self.findCurrentMatchByUserId(self.service.session.getContextId())
         self.mapper.match.overrideStepToAbandoned(model)
-        return self.mapAndReturn(model, MatchConstant.DEFAULT_CORRECT_WORD)
+        return self.persistMapAndReturn(model, MatchConstant.DEFAULT_CORRECT_WORD)
 
 
     @ServiceMethod(requestClass=[User.User])
@@ -33,7 +36,7 @@ class MatchService:
                 totalGuesses = MatchConfig.DEFAUTL_TOTAL_GUESSES,
                 step = MatchConstant.INITIAL_STEP
             )
-        return self.mapAndReturn(model, MatchConstant.DEFAULT_CORRECT_WORD)
+        return self.persistMapAndReturn(model, MatchConstant.DEFAULT_CORRECT_WORD)
 
 
     @ServiceMethod(requestClass=[User.User])
@@ -56,9 +59,13 @@ class MatchService:
 
     @ServiceMethod(requestClass=[User.User, str])
     def addGuess(self, user, wordGuess):
+        LOGGER(self.addGuess, 'Word guess received')
         model = self.findOrCreateModelByUserModel(user)
+        LOGGER(self.addGuess, 'Match found')
         self.validator.match.validateWordGuess(wordGuess, model)
+        LOGGER(self.addGuess, 'Word guess validated')
         guess = self.service.guess.createModel(wordGuess, model)
+        LOGGER(self.addGuess, 'Guess created')
         if guess.word not in [g.word for g in model.guessList]:
             model.guessList.append(guess)
         correctWord = MatchConstant.DEFAULT_CORRECT_WORD
@@ -70,7 +77,8 @@ class MatchService:
         if len(model.guessList) > model.totalGuesses and model.step not in MatchConstant.END_MATCH_STEP_LIST:
             model.step = MatchStep.LOSS
             correctWord = model.word
-        return self.mapAndReturn(model, correctWord)
+        LOGGER(self.addGuess, 'Word guess processed')
+        return self.persistMapAndReturn(model, correctWord)
 
 
     @ServiceMethod(requestClass=[int])
@@ -90,9 +98,10 @@ class MatchService:
 
     @ServiceMethod(requestClass=[Match.Match])
     def persist(self, model):
+        LOGGER(self.addGuess, 'Updating match')
         return self.repository.match.save(model)
 
 
     @ServiceMethod(requestClass=[Match.Match, str])
-    def mapAndReturn(self, model, correctWord):
+    def persistMapAndReturn(self, model, correctWord):
         return self.mapper.match.fromModelToResponseDto(self.persist(model), correctWord)
