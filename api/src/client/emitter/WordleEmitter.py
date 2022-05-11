@@ -9,7 +9,7 @@ from config import WordleQueueConfig
     timeout = WordleQueueConfig.EMITTER_TIMEOUT,
     headers = {
         'Content-Type': 'application/json',
-        JwtConstant.DEFAULT_JWT_API_KEY_HEADER_NAME: f'Bearer {WordleQueueConfig.QUEUE_API_KEY}'
+        JwtConstant.DEFAULT_JWT_API_KEY_HEADER_NAME: f'Bearer {WordleQueueConfig.SUBSCRIPTION_API_KEY}'
     }
     , muteLogs = False
     , logRequest = True

@@ -3,7 +3,7 @@ from globals import getGlobalsInstance
 globalsInstance = getGlobalsInstance()
 
 
-QUEUE_API_KEY = globalsInstance.getSetting('queue.wordle.api-key')
+SUBSCRIPTION_API_KEY = globalsInstance.getSetting('queue.wordle.subscription.api-key')
 
 LISTENER_TIMEOUT = globalsInstance.getSetting('queue.wordle.listener.timeout')
 

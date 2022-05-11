@@ -49,11 +49,12 @@ match:
 
 queue:
     wordle:
-        api-key: ${WORDLE_API_KEY:default.default.default}
+        subscription:
+            api-key: ${WORDLE_API_KEY:default.default.default}
         listener:
             timeout: 2
         emitter:
-            url: ${QUEUE_MESSAGE_EMITTER_BASE_URL:https:my-emitter-host/base-url}/message/emitter
+            url: ${QUEUE_MESSAGE_EMITTER_BASE_URL}/queue-manager-api
             timeout: 2
             queue-key:
                 create-word: 'wordle-create-word'
