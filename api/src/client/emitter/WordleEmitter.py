@@ -1,5 +1,5 @@
 from python_framework import Serializer, HttpStatus, JwtConstant
-from queue_manager_api import MessageEmitter, MessageEmitterMethod, MessageDto
+from queue_manager_api import MessageEmitter, MessageEmitterMethod, MessageDto, EmitterConstant
 
 from config import WordleQueueConfig
 
@@ -18,6 +18,7 @@ from config import WordleQueueConfig
 class WordleEmitter:
 
     @MessageEmitterMethod(
+        url = EmitterConstant.URL,
         queueKey = WordleQueueConfig.EMITTER_CREATE_WORD_QUEUE
         # , logRequest = True
         # , logResponse = True
