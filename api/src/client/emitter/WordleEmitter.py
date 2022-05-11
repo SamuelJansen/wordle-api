@@ -30,6 +30,7 @@ class WordleEmitter:
 
 
     @MessageEmitterMethod(
+        url = EmitterConstant.URL,
         queueKey = WordleQueueConfig.EMITTER_CREATE_GUESS_QUEUE
         # , logRequest = True
         # , logResponse = True
