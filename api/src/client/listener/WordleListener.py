@@ -14,7 +14,8 @@ from config import WordleQueueConfig
 class WordleListener:
 
     @MessageListenerMethod(url = '/listener/word',
-        requestClass=[dict]
+        requestClass=[dict],
+        runInAThread = True
         # , logRequest = True
         # , logResponse = True
     )
@@ -26,7 +27,8 @@ class WordleListener:
 
 
     @MessageListenerMethod(url = '/listener/guess',
-        requestClass=[dict]
+        requestClass=[dict],
+        runInAThread = True
         # , logRequest = True
         # , logResponse = True
     )
