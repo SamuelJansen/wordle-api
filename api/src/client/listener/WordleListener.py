@@ -21,6 +21,7 @@ class WordleListener:
     )
     def acceptWord(self, dto):
         ###- {'wordList':[wordGuess]}
+        print('FlaskUtil.safellyGetHeaders(): {FlaskUtil.safellyGetHeaders()}')
         for word in dto.get('wordList', []):
             self.service.word.createOrUpdateByText(word)
         return {}, HttpStatus.ACCEPTED
@@ -33,6 +34,7 @@ class WordleListener:
         # , logResponse = True
     )
     def acceptGuess(self, dto):
+        print('FlaskUtil.safellyGetHeaders(): {FlaskUtil.safellyGetHeaders()}')
         ###- {'guess': wordGuess,'userId': match.user.id,'matchId': match.id}
         self.service.guessEvent.createModel(dto)
         return {}, HttpStatus.ACCEPTED

@@ -1,7 +1,8 @@
 from python_framework import SqlAlchemyProxy as sap
+from python_framework import AuditoryUtil
 
 from ModelAssociation import REQUEST_DATA, USER, MODEL
-from util import AuditoryUtil, ModelUtil
+from util import ModelUtil
 from constant import RequestDataConstant
 
 
@@ -23,7 +24,6 @@ class RequestData(MODEL):
     plataform = sap.Column(sap.String(LITTLE_STRING_SIZE), default=RequestDataConstant.DEFAUTL_PLATAFORM)
     device = sap.Column(sap.String(LITTLE_STRING_SIZE), default=RequestDataConstant.DEFAUTL_DEVICE)
     country = sap.Column(sap.String(LITTLE_STRING_SIZE), default=RequestDataConstant.DEFAUTL_COUNTRY)
-    identifiers = sap.Column(sap.String(STRING_SIZE), default=RequestDataConstant.DEFAUTL_IDENTIFIERS)
 
     user, userId = sap.getManyToOne(REQUEST_DATA, USER, MODEL)
 
@@ -41,7 +41,6 @@ class RequestData(MODEL):
         plataform = None,
         device = None,
         country = None,
-        identifiers = None,
         user = None,
         userId = None,
         createdAt = None,
@@ -57,7 +56,6 @@ class RequestData(MODEL):
         self.plataform = plataform
         self.device = device
         self.country = country
-        self.identifiers = identifiers
         self.user, self.userId = ModelUtil.getManyToOneData(user, userId, MODEL)
         self.createdAt = createdAt
         self.updatedAt = updatedAt
@@ -66,4 +64,4 @@ class RequestData(MODEL):
         AuditoryUtil.overrideSessionData(self)
 
     def __repr__(self):
-        return f'{self.__tablename__}(id: {self.id}, userId: {self.userId}, ipv6: {self.ipv6}, ipv4: {self.ipv4}, plataform: {self.plataform}, device: {self.device}, country: {self.country}, identifiers={self.Identifiers})'
+        return f'{self.__tablename__}(id: {self.id}, userId: {self.userId}, ipv6: {self.ipv6}, ipv4: {self.ipv4}, plataform: {self.plataform}, device: {self.device}, country: {self.country})'

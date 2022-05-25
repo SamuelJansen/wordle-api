@@ -1,8 +1,8 @@
 from python_framework import SqlAlchemyProxy as sap
-from python_framework import ConverterStatic
+from python_framework import ConverterStatic, AuditoryUtil
 
 from ModelAssociation import MATCH, GUESS, USER, MODEL
-from util import AuditoryUtil, ModelUtil
+from util import ModelUtil
 
 
 GIANT_STRING_SIZE = 16384

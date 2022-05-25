@@ -1,8 +1,8 @@
 from python_framework import SqlAlchemyProxy as sap
-from python_framework import ConverterStatic
+from python_framework import ConverterStatic, AuditoryUtil
 
 from ModelAssociation import USER, MATCH, GUESS, MODEL
-from util import AuditoryUtil, ModelUtil
+from util import ModelUtil
 from constant import MatchConstant
 from config import MatchConfig
 from enumeration.MatchStep import MatchStep

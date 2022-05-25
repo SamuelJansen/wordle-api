@@ -35,10 +35,6 @@ def getCountry(headers):
     return headers.get('Cf-Ipcountry', f'{RequestDataConstant.DEFAUTL_COUNTRY}')
 
 
-def getIdentifiers(headers):
-    return headers.get('Identifiers', f'{RequestDataConstant.DEFAUTL_IDENTIFIERS}')
-
-
 def getRequestDataRequestDto(headers):
     return RequestDataDto.RequestDataRequestDto(
         ipv6 = getIpv6(headers),
@@ -47,6 +43,5 @@ def getRequestDataRequestDto(headers):
         userAgentComplement = getUserAgentComplement(headers),
         plataform = getPlataform(headers),
         device = getDevice(headers),
-        country = getCountry(headers),
-        identifiers = getIdentifiers(headers)
+        country = getCountry(headers)
     )

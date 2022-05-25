@@ -1,7 +1,8 @@
 from python_framework import SqlAlchemyProxy as sap
+from python_framework import AuditoryUtil
 
 from ModelAssociation import REQUEST_DATA, USER, GUESS, MATCH, MODEL
-from util import AuditoryUtil, ModelUtil
+from util import ModelUtil
 from constant import UserConstant
 
 

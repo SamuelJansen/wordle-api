@@ -14,6 +14,7 @@ match:
 queue:
     wordle:
         emitter:
+            url: ${QUEUE_MESSAGE_EMITTER_BASE_URL}:6931/queue-manager-api
             queue-key:
                 create-word: 'wordle-create-word-dev'
                 create-guess: 'wordle-create-guess-dev'

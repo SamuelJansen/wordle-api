@@ -8,8 +8,7 @@ class RequestDataRequestDto:
         userAgentComplement = None,
         plataform = None,
         device = None,
-        country = None,
-        identifiers = None
+        country = None
     ):
         self.id = id
         self.ipv6 = ipv6
@@ -19,7 +18,6 @@ class RequestDataRequestDto:
         self.plataform = plataform
         self.device = device
         self.country = country
-        self.identifiers = identifiers
 
 
 class RequestDataResponseDto:
@@ -32,8 +30,7 @@ class RequestDataResponseDto:
         userAgentComplement = None,
         plataform = None,
         device = None,
-        country = None,
-        identifiers = None
+        country = None
     ):
         self.id = id
         self.ipv6 = ipv6
@@ -43,4 +40,3 @@ class RequestDataResponseDto:
         self.plataform = plataform
         self.device = device
         self.country = country
-        self.identifiers = identifiers

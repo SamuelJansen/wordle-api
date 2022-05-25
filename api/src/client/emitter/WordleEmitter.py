@@ -1,4 +1,4 @@
-from python_framework import Serializer, HttpStatus, JwtConstant
+from python_framework import Serializer, HttpStatus, JwtConstant, FlaskUtil
 from queue_manager_api import MessageEmitter, MessageEmitterMethod, MessageDto, EmitterConstant
 
 from config import WordleQueueConfig
@@ -27,7 +27,10 @@ class WordleEmitter:
         # responseClass=[MessageDto.MessageRequestDto]
     )
     def createWord(self, dto):
-        return self.emit(body=dto)
+        return self.emit(
+            messageHeaders = FlaskUtil.safellyGetHeaders(),
+            body = dto
+        )
 
 
     @MessageEmitterMethod(
@@ -40,4 +43,7 @@ class WordleEmitter:
         # responseClass=[MessageDto.MessageRequestDto]
     )
     def createGuess(self, dto):
-        return self.emit(body=dto)
+        return self.emit(
+            messageHeaders = FlaskUtil.safellyGetHeaders(),
+            body = dto
+        )
