@@ -10,7 +10,7 @@ def isValidSession(service, jwtBody):
     isValid = False
     try:
         apiInstance = getApiInstance(service)
-        apiInstance.sessionManager.validateAccessSession(apiInstance.sessionManager.decode(jwtBody))
+        apiInstance.resource.manager.session.validateAccessSession(apiInstance.resource.manager.session.decode(jwtBody))
         isValid = True
     except Exception as exception:
         log.debug(isValidSession, f'Invalid Session. Returnning "isValid={isValid}" by default', exception=exception)

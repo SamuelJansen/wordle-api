@@ -4,15 +4,15 @@ from constant import RequestDataConstant
 from dto import RequestDataDto
 
 
-COMBINED_IPV6_COMA_IPV4 = f'{RequestDataConstant.DEFAUTL_IPV6}, {RequestDataConstant.DEFAUTL_IPV4}'
+COMBINED_IPV6_COMA_IPV4 = f'{RequestDataConstant.DEFAUTL_IPV6},{RequestDataConstant.DEFAUTL_IPV4}'
 
 
 def getIpv6(headers):
-    return headers.get('Cf-Connecting-Ip', headers.get('X-Forwarded-For', f'{COMBINED_IPV6_COMA_IPV4}').split(c.COMA)[0])
+    return headers.get('Cf-Connecting-Ip', headers.get('X-Forwarded-For', f'{COMBINED_IPV6_COMA_IPV4}').split(c.COMA)[0].strip())
 
 
 def getIpv4(headers):
-    return headers.get('X-Real-Ip', headers.get('X-Forwarded-For', f'{COMBINED_IPV6_COMA_IPV4}').split(c.COMA)[1])
+    return headers.get('X-Real-Ip', headers.get('X-Forwarded-For', f'{COMBINED_IPV6_COMA_IPV4}').split(c.COMA)[1].strip())
 
 
 def getUserAgent(headers):
@@ -37,11 +37,11 @@ def getCountry(headers):
 
 def getRequestDataRequestDto(headers):
     return RequestDataDto.RequestDataRequestDto(
-        ipv6 = getIpv6(headers),
-        ipv4 = getIpv4(headers),
-        userAgent = getUserAgent(headers),
-        userAgentComplement = getUserAgentComplement(headers),
-        plataform = getPlataform(headers),
-        device = getDevice(headers),
-        country = getCountry(headers)
+        ipv6 = getIpv6(headers).strip(),
+        ipv4 = getIpv4(headers).strip(),
+        userAgent = getUserAgent(headers).strip(),
+        userAgentComplement = getUserAgentComplement(headers).strip(),
+        plataform = getPlataform(headers).strip(),
+        device = getDevice(headers).strip(),
+        country = getCountry(headers).strip()
     )

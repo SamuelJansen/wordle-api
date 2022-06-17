@@ -21,8 +21,8 @@ class WordleEmitter:
         url = EmitterConstant.URL,
         queueKey = WordleQueueConfig.EMITTER_CREATE_WORD_QUEUE,
         runInAThread = True
-        # , logRequest = True
-        # , logResponse = True
+        , logRequest = True
+        , logResponse = True
         # requestClass=[MessageDto.MessageRequestDto, str],
         # responseClass=[MessageDto.MessageRequestDto]
     )
@@ -37,8 +37,8 @@ class WordleEmitter:
         url = EmitterConstant.URL,
         queueKey = WordleQueueConfig.EMITTER_CREATE_GUESS_QUEUE,
         runInAThread = True
-        # , logRequest = True
-        # , logResponse = True
+        , logRequest = True
+        , logResponse = True
         # requestClass=[MessageDto.MessageRequestDto, str],
         # responseClass=[MessageDto.MessageRequestDto]
     )
